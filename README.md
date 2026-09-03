@@ -46,7 +46,7 @@ requirement for a full slug in the URL.
 
 1. In Stash: **Settings → Scrapers → Add Source**, with the raw URL of this
    repo's `index.yml` file (e.g.
-   `https://raw.githubusercontent.com/jojo-topo/stash-scrapers/main/index.yml`).
+   `https://raw.githubusercontent.com/jojo-topo/stash-scrapers/master/index.yml`).
 2. Install the scraper(s) you want from the list.
 3. For `Rule34VideoFromID`, complete the cookie setup described above before
    using it.

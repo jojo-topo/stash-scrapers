@@ -1,0 +1,49 @@
+name: Build scraper packages
+
+# Runs whenever either scraper's actual source files change on master - NOT
+# when index.yml or the zips themselves change, so the bot's own commit
+# below never re-triggers this workflow (no infinite loop, [skip ci] kept
+# anyway as a belt-and-suspenders safety net).
+on:
+  push:
+    branches: [master]
+    paths:
+      - "rule34-python/rule34-python.py"
+      - "rule34-python/rule34-python.yml"
+      - "Rule34VideoFromID/Rule34VideoFromID.py"
+      - "Rule34VideoFromID/Rule34VideoFromID.yml"
+  workflow_dispatch: # lets you trigger it manually from the Actions tab too
+
+permissions:
+  contents: write # needed so the bot can push the updated zips/index.yml back
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ruamel.yaml
+        run: pip install ruamel.yaml
+
+      - name: Zip scraper packages
+        run: |
+          cd rule34-python
+          zip -j ../rule34-python.zip rule34-python.py rule34-python.yml
+          cd ../Rule34VideoFromID
+          zip -j ../Rule34VideoFromID.zip Rule34VideoFromID.py Rule34VideoFromID.yml
+
+      - name: Update index.yml (sha256, date)
+        run: python3 .github/scripts/update_index.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add rule34-python.zip Rule34VideoFromID.zip index.yml
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-build scraper packages [skip ci]"
+            git push
+          fi
