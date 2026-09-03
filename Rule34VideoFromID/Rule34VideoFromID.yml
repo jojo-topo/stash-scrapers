@@ -1,0 +1,37 @@
+name: "Rule34Video (by file ID)"
+
+# Python scraper: resolves the ID from the filename into a full URL (KVS
+# engine) then scrapes the page. Use when the file only has the ID in its
+# name (e.g. 4405657_xxx.mp4 or "Title [4405657]").
+# Coexists with the original XPath-based "Rule34Video" scraper.
+
+sceneByFragment:
+  action: script
+  script:
+    - python
+    - Rule34VideoFromID.py
+    - query
+
+sceneByName:
+  action: script
+  script:
+    - python
+    - Rule34VideoFromID.py
+    - search
+
+sceneByQueryFragment:
+  action: script
+  script:
+    - python
+    - Rule34VideoFromID.py
+    - query
+
+sceneByURL:
+  - url:
+      - rule34video.com/video/
+      - rule34video.com/videos/
+    action: script
+    script:
+      - python
+      - Rule34VideoFromID.py
+      - url

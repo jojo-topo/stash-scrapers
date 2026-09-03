@@ -1,0 +1,35 @@
+name: rule34-python
+# rule34.xxx scraper via Python - HTML mode, no API rate limit
+# Dependencies: Python 3 stdlib only (no pip install required)
+
+sceneByFragment:
+  action: script
+  script:
+    - python
+    - rule34-python.py
+    - sceneByFragment
+
+imageByFragment:
+  action: script
+  script:
+    - python
+    - rule34-python.py
+    - imageByFragment
+
+sceneByURL:
+  - action: script
+    url:
+      - https://rule34.xxx
+    script:
+      - python
+      - rule34-python.py
+      - sceneByURL
+
+imageByURL:
+  - action: script
+    url:
+      - https://rule34.xxx
+    script:
+      - python
+      - rule34-python.py
+      - sceneByURL
