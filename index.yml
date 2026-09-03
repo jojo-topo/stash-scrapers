@@ -6,14 +6,15 @@
   name: rule34-python
   description: "rule34.xxx scene/image scraper (Python, stdlib only, no API rate limit)"
   version: "1.0.0"
-  date: "2026-09-03 00:00:00"
+  date: "2026-09-03 15:07:28"
   path: rule34-python.zip
-  sha256: d977e46968073a1da27d71f4a0bd05b412ec33e91a2ed8f6e43fc82e6da8c2f3
+  sha256: 0b44a90fb475bcbf3ad4a8b17ea4da9eada9147e28d4a0c839a56c5cbd2d5178
 
 - id: Rule34VideoFromID
   name: "Rule34Video (by file ID)"
-  description: "rule34video.com scene scraper that resolves scenes by the numeric ID in the filename, bypassing the site's slug requirement"
+  description: "rule34video.com scene scraper that resolves scenes by the numeric
+    ID in the filename, bypassing the site's slug requirement"
   version: "1.0.0"
-  date: "2026-09-03 00:00:00"
+  date: "2026-09-03 15:07:28"
   path: Rule34VideoFromID.zip
-  sha256: c402dbf4ad2dffd4e9c07b7d4b53cd6cf7eb5da70102cc4cc750706935f3470b
+  sha256: 5b6dceb661e414dcce40e67ec8994762b8bb9afc942d8426fde7a0cf978df973
