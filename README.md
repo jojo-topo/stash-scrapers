@@ -4,6 +4,12 @@ Two Stash scene scrapers for rule34.xxx and rule34video.com, built to work
 well with [Scene Tagger](https://github.com/jojo-topo/stash-plugins) but
 usable on their own through Stash's normal scrape UI too.
 
+These are personal tools, built for my own setup and shared as-is because
+they turned out complete enough to be useful to others. They're tested on
+Windows with Python installed directly on the host - not verified on
+Docker/Linux setups, and I'm not actively maintaining broad compatibility.
+Pull requests / forks welcome if you adapt them for your environment.
+
 ## Scrapers
 
 ### rule34-python
