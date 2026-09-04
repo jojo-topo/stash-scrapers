@@ -44,7 +44,7 @@ requirement for a full slug in the URL.
 
 ## Installation
 
-1. In Stash: **Settings → Scrapers → Add Source**, with the raw URL of this
+1. In Stash: **Settings → Metadata Providers → Add Source**, with the raw URL of this
    repo's `index.yml` file (e.g.
    `https://raw.githubusercontent.com/jojo-topo/stash-scrapers/master/index.yml`).
 2. Install the scraper(s) you want from the list.

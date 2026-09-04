@@ -1,5 +1,5 @@
 # Stash scraper source - add in Stash via
-# Settings -> Scrapers -> Add Source, with the raw URL of this file, e.g.:
+# Settings -> Metadata Providers -> Add Source, with the raw URL of this file, e.g.:
 # https://raw.githubusercontent.com/jojo-topo/stash-scrapers/master/index.yml
 
 - id: rule34-python
