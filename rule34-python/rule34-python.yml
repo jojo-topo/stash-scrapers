@@ -1,5 +1,5 @@
 name: rule34-python
-# rule34.xxx scraper via Python - HTML mode, no API rate limit
+# rule34.xxx scraper via Python - official API mode (needs api_key + user_id in rule34-config.json)
 # Dependencies: Python 3 stdlib only (no pip install required)
 
 sceneByFragment:

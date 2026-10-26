@@ -10,6 +10,7 @@ on:
     paths:
       - "rule34-python/rule34-python.py"
       - "rule34-python/rule34-python.yml"
+      - "rule34-python/import_tags.py"
       - "Rule34VideoFromID/Rule34VideoFromID.py"
       - "Rule34VideoFromID/Rule34VideoFromID.yml"
   workflow_dispatch: # lets you trigger it manually from the Actions tab too
@@ -29,7 +30,7 @@ jobs:
       - name: Zip scraper packages
         run: |
           cd rule34-python
-          zip -j ../rule34-python.zip rule34-python.py rule34-python.yml
+          zip -j ../rule34-python.zip rule34-python.py rule34-python.yml import_tags.py
           cd ../Rule34VideoFromID
           zip -j ../Rule34VideoFromID.zip Rule34VideoFromID.py Rule34VideoFromID.yml
 

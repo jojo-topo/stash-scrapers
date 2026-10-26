@@ -17,7 +17,19 @@ Pull requests / forks welcome if you adapt them for your environment.
 Scrapes scenes and images from **rule34.xxx**. Python standard library only
 - no `pip install` required.
 
-- Matches files by post ID found in the filename, or by URL.
+- Uses rule34.xxx's **official API**, because the site's post pages now sit
+  behind a CAPTCHA. This needs a free **API key and user ID**: get them from
+  your rule34.xxx account options page, then fill `api_key` and `user_id` in
+  `rule34-config.json` (created next to the script on first run).
+- Matches files by post ID found in the filename, or by URL. Recognised file
+  names: `1234567`, `1234567_2`, `rule34_1234567`, `rule34.xxx-1234567` and
+  `<name> - r34xxx 1234567`.
+- Optional but recommended: run `python import_tags.py` once from the scraper
+  folder (about 30-40 minutes, resumable). It downloads the type of every tag
+  (artist, character, general...) into a local database, so scrapes don't have
+  to look tags up one by one through the rate-limited API.
+- Needs `python` to be reachable: either in your PATH, or set in Stash under
+  **Settings → System → Python executable path**.
 - Resolves studio/performer names against your local Stash database (by
   name and alias) so re-scraping doesn't create duplicates.
 - Encodes every artist candidate from a multi-artist post into the scene's
@@ -25,7 +37,11 @@ Scrapes scenes and images from **rule34.xxx**. Python standard library only
   the convention [Scene Tagger](https://github.com/jojo-topo/stash-plugins)
   reads to offer a choice between multiple studios on a single post.
 - Built-in rate limiting (randomized delay + backoff on HTTP 429) shared
-  across concurrent scrape processes via a timestamp file.
+  across concurrent scrape processes via a timestamp file. The API cuts off
+  at about 60 requests per minute, so the scraper keeps to 50.
+- A crash never leaves Stash with an empty answer (`could not unmarshal json
+  ... EOF`): the script returns no result and writes the error to the Stash
+  logs (Settings → Logs, level Debug).
 
 ### Rule34VideoFromID
 

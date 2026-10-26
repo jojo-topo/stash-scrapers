@@ -4,8 +4,8 @@
 
 - id: rule34-python
   name: rule34-python
-  description: "rule34.xxx scene/image scraper (Python, stdlib only, no API rate limit)"
-  version: "1.0.0"
+  description: "rule34.xxx scene/image scraper (Python, stdlib only, official API - needs a free api_key and user_id)"
+  version: "2.0.0"
   date: "2026-09-03 15:07:28"
   path: rule34-python.zip
   sha256: 0b44a90fb475bcbf3ad4a8b17ea4da9eada9147e28d4a0c839a56c5cbd2d5178
