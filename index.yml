@@ -4,17 +4,18 @@
 
 - id: rule34-python
   name: rule34-python
-  description: "rule34.xxx scene/image scraper (Python, stdlib only, official API - needs a free api_key and user_id)"
+  description: "rule34.xxx scene/image scraper (Python, stdlib only, official API
+    - needs a free api_key and user_id)"
   version: "2.0.0"
-  date: "2026-10-26 12:11:51"
+  date: "2026-10-26 12:38:20"
   path: rule34-python.zip
-  sha256: de7db62bc1d250915b9141c4f56ea47722efd1dc167204a9b2f567b5a62256fb
+  sha256: b05c79aff412ff08d16ea626a22e0d9247145d6d583ef2777119bfc335c479f0
 
 - id: Rule34VideoFromID
   name: "Rule34Video (by file ID)"
   description: "rule34video.com scene scraper that resolves scenes by the numeric
     ID in the filename, bypassing the site's slug requirement"
   version: "1.0.0"
-  date: "2026-09-03 15:07:28"
+  date: "2026-10-26 12:38:20"
   path: Rule34VideoFromID.zip
-  sha256: 5b6dceb661e414dcce40e67ec8994762b8bb9afc942d8426fde7a0cf978df973
+  sha256: 8b38f2ba83b3d7831942c5c66c55b6e53a50dace8fceb65003b94dfcbcc6779e
