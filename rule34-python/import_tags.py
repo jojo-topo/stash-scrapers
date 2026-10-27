@@ -51,7 +51,7 @@ def main():
     r34 = load_scraper()
     auth = r34.api_auth()
     if not auth:
-        p(f"api_key / user_id are missing: fill both fields in {r34.CONFIG_FILE} and run this again.")
+        p(r34.api_auth_error() or "api_key / user_id are missing.")
         return 1
     db = r34.tag_cache_load()  # TagDB (creates the database, migrates the old JSON cache)
     conn, lock = db._db, db._lock

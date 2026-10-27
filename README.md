@@ -27,10 +27,22 @@ Scrapes scenes and images from **rule34.xxx**. Python standard library only
    found: either it is in your PATH, or you set it in Stash under
    **Settings → System → Python executable path**.
 2. **Get your API key and user ID** from your rule34.xxx account options page
-   (<https://rule34.xxx/index.php?page=account&s=options>).
+   (<https://rule34.xxx/index.php?page=account&s=options>), in the *API Access
+   Credentials* box. It shows `&api_key=KEY&user_id=ID`. If the key part is
+   empty, your account has no key yet: tick **Generate New Key?** and save.
 3. **Run a scrape once.** It will fail and create `rule34-config.json` next to
    the script. The Stash log (Settings → Logs) tells you the exact path.
-4. **Fill in `api_key` and `user_id`** in that file, then scrape again.
+4. **Fill in `api_key` and `user_id`** in that file with the values only (what
+   comes after each `=`, without the `&`), then scrape again:
+
+   ```json
+   {
+     "api_key": "a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f90",
+     "user_id": "1234567"
+   }
+   ```
+
+   (These are fake values. Never share your real key.)
 5. *(Optional, recommended)* **Download the tag database once**: open a
    terminal in the scraper folder and run
 
@@ -77,6 +89,8 @@ with `[Scrape / rule34-python]`.
 | Message | Cause and fix |
 |---|---|
 | `api_key / user_id are missing` | Fill both fields in `rule34-config.json` (the log gives its path). |
+| `api_key is empty: your rule34.xxx account has no API key yet` | On your options page tick *Generate New Key?*, save, and copy the long key into `api_key`. |
+| `api_key / user_id must contain only the values` | You pasted `&api_key=...&user_id=...`. Keep only the value after each `=`. |
 | `API key refused? check api_key / user_id` | Wrong key or user ID. Copy them again from your account options page. |
 | `Could not extract rule34 post ID` | The file name isn't recognised. Rename it (see the table above) or scrape by URL. |
 | `Post ... not found (deleted?)` | The post was removed from rule34.xxx. |
@@ -110,6 +124,12 @@ requirement for a full slug in the URL.
    using it.
 
 ## Changelog
+
+### rule34-python 2.0.1
+- Clearer messages when the credentials are wrong: empty key (account without
+  an API key), missing user ID, or the whole `&api_key=...&user_id=...` text
+  pasted instead of the values.
+- README: how to read the *API Access Credentials* box.
 
 ### rule34-python 2.0.0
 - Switched to the official rule34.xxx API (the HTML pages are behind a

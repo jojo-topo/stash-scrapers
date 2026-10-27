@@ -539,11 +539,32 @@ TAG_CACHE_FILE = os.path.join(SCRIPT_DIR, "rule34-tag-cache.json")
 _tag_cache = None
 
 
+OPTIONS_URL = "https://rule34.xxx/index.php?page=account&s=options"
+
+
+def api_auth_error():
+    """Why the credentials can't be used, as a message for the log (None if they look usable)."""
+    key = str(cfg("api_key") or "").strip()
+    uid = str(cfg("user_id") or "").strip()
+    where = f"Edit {CONFIG_FILE} and retry."
+    if any(c in v for v in (key, uid) for c in "&="):
+        return ("api_key / user_id must contain only the values, not the text copied from the options "
+                "page. From '&api_key=KEY&user_id=ID', put KEY in api_key and ID in user_id. " + where)
+    if uid and not key:
+        return ("api_key is empty: your rule34.xxx account has no API key yet. On " + OPTIONS_URL +
+                " tick 'Generate New Key?', save, then copy the long key into api_key. " + where)
+    if key and not uid:
+        return "user_id is empty: copy the number after 'user_id=' on " + OPTIONS_URL + ". " + where
+    if not key and not uid:
+        return ("api_key / user_id are missing. rule34.xxx requires an API key: get yours at " +
+                OPTIONS_URL + ", then fill both fields. " + where)
+    return None
+
+
 def api_auth():
-    key, uid = cfg("api_key"), cfg("user_id")
-    if not key or not uid:
+    if api_auth_error():
         return None
-    return f"&api_key={key}&user_id={uid}"
+    return f"&api_key={str(cfg('api_key')).strip()}&user_id={str(cfg('user_id')).strip()}"
 
 
 TAG_DB_FILE = os.path.join(SCRIPT_DIR, "rule34-tags.db")
@@ -729,9 +750,7 @@ def fetch_notes_api(post_id, auth):
 def fetch_post_api(post_id):
     auth = api_auth()
     if not auth:
-        log("api_key / user_id are missing. rule34.xxx requires an API key: get yours at "
-            "https://rule34.xxx/index.php?page=account&s=options, then fill both fields in "
-            f"{CONFIG_FILE} and retry.")
+        log(api_auth_error())
         return None
     # XML (et pas json=1) : seule la reponse XML contient created_at (vraie date de post)
     raw = rate_limited_get(f"{API_BASE}&s=post&id={post_id}{auth}")

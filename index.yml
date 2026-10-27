@@ -6,7 +6,7 @@
   name: rule34-python
   description: "rule34.xxx scene/image scraper (Python, stdlib only, official API
     - needs a free api_key and user_id)"
-  version: "2.0.0"
+  version: "2.0.1"
   date: "2026-10-26 12:38:20"
   path: rule34-python.zip
   sha256: b05c79aff412ff08d16ea626a22e0d9247145d6d583ef2777119bfc335c479f0
